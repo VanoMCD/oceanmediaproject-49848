@@ -62,7 +62,60 @@ This project is built with:
 
 ## How can I deploy this project?
 
+### Deploy via Lovable
+
 Simply open [Lovable](https://lovable.dev/projects/28b824bf-1e66-4d15-8393-7dd34c3a418c) and click on Share -> Publish.
+
+### Deploy via GitHub Pages (Automatic)
+
+This project is configured for automatic deployment to GitHub Pages. Here's how to set it up:
+
+#### Initial Setup:
+
+1. **Push your code to GitHub** (if not already done)
+2. **Enable GitHub Pages:**
+   - Go to your repository Settings
+   - Navigate to "Pages" in the left sidebar
+   - Under "Source", select "GitHub Actions"
+3. **Update base URL** (if needed):
+   - If your repository is not at root (e.g., `username.github.io/repo-name`), edit `vite.config.ts`
+   - Change `base: '/'` to `base: '/your-repo-name/'`
+   - Commit and push this change
+
+#### Automatic Deployment:
+
+Once configured, every push to the `main` branch will automatically:
+1. Build the project
+2. Generate optimized HTML with all CSS/JS links
+3. Deploy to GitHub Pages
+
+#### Tracking Deployment Status:
+
+**To check if deployment was successful:**
+1. Go to your repository on GitHub
+2. Click on "Actions" tab
+3. Look for the latest workflow run
+4. Green checkmark ✓ = successful deployment
+5. Red X ✗ = deployment failed
+
+**If deployment fails:**
+- Click on the failed workflow
+- Check the build logs for error messages
+- Common issues:
+  - Missing dependencies (check package.json)
+  - Build errors (test locally with `npm run build`)
+  - GitHub Pages not enabled in Settings → Pages
+
+**View your deployed site:**
+- URL will be: `https://your-username.github.io/your-repo-name/`
+- Or check the "Actions" tab → successful deployment → "github-pages" environment link
+
+#### Manual Deployment Trigger:
+
+You can also trigger deployment manually:
+1. Go to "Actions" tab
+2. Select "Deploy to GitHub Pages" workflow
+3. Click "Run workflow" button
 
 ## Can I connect a custom domain to my Lovable project?
 
